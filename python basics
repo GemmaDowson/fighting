@@ -1,3 +1,9 @@
 ## foundamentals
 # int() takes the "whole" part of a decimal number
 # floating point numbe have around 15 decimal digits of accuracy
+#convert an integer into string
+hour = 3
+ones = hour%10
+tens = hours//10
+print(str(tens)+str(ones)+" :00")
+#import random.randrange
