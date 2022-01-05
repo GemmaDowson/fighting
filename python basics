@@ -7,3 +7,120 @@ ones = hour%10
 tens = hours//10
 print(str(tens)+str(ones)+" :00")
 #import random.randrange
+##event-driven programming 
+#start-initialize-wait(handler)[wait until event happens]
+
+## gloabal and local variable 
+#local variable is the variable inside the function 
+global num # update num to be gloabal
+num = 5
+# global variable are an easy way for event handlers to communivaticate game information
+# safer method but they require sophisticated object-programming techniques. 
+
+##simplegui in python [web program] 
+##program structure
+#gloabals(state)
+#helper function
+#classes(later)
+#define event handlers
+#create a frame
+#register event handlers
+#start frame & timers
+import simplegui
+#gloabal variable
+counter = 0
+#define helper function
+def increment():
+  global counter
+  counter = counter +1
+#define event handler function
+def tick():
+  increment()
+  print(counter)
+def buttonpress():
+  global counter
+  counter = counter+1
+#create a frame
+frame = simplegui.create_frame("simplegui test", 100,100)
+#register event handlers
+timer = simplegui.create_timer(1000,tick)
+frame.add_button("click me", buttonpress)
+# start frame and timers
+frame.start()
+timer.start()
+
+# simplegui [control area, canvas, console]
+#simplegui is a custom python graphical user interface(gui) module implemented directly in codeskulptor that provides an easy to learn interface for building
+#interactive programs in python
+# calculator with all buttons
+
+
+import simplegui
+
+
+# intialize globals
+store = 12
+operand = 3
+
+
+# event handlers for calculator with a store and operand
+
+def output():
+    """prints contents of store and operand"""
+    print "Store = ", store
+    print "Operand = ", operand
+    print ""
+    
+def swap():
+    """ swap contents of store and operand"""
+    global store, operand
+    store, operand = operand, store
+    output()
+    
+def add():
+    """ add operand to store"""
+    global store, operand
+    store = store + operand
+    output()
+
+def sub():
+    """ subtract operand from store"""
+    global store, operand
+    store = store - operand
+    output()
+
+def mult():
+    """ multiply store by operand"""
+    global store, operand 
+    store = store * operand
+    output()
+
+def div():
+    """ divide store by operand"""
+    global store, operand
+    store = store / operand
+    output()
+    
+def enter(inp):
+  global operand
+  operand = float(inp)
+  output()
+
+# create frame
+f = simplegui.create_frame("Calculator",300,300) ## width and heights for the frame 
+
+# register event handlers
+f.add_button("Print", output, 100) # handler is output, width is 100
+f.add_button("Swap", swap, 100)
+f.add_button("Add", add, 100)
+f.add_button("Sub", sub, 100)
+f.add_button("Mult", mult, 100)
+f.add_button("Div", div, 100)
+f.add_input("enter operand", enter,100)
+
+# get frame rolling
+f.start()
+
+#everytime  you assign a global variable inside a function, you have to call global variable 
+#modulo choice
+
